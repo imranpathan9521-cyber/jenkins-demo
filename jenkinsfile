@@ -1,19 +1,19 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello from GitHub!'
-            }
-        }
         stage('Build') {
             steps {
-                echo 'Building...'
+                sh 'mvn compile'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
+                sh 'mvn test'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'mvn package'
             }
         }
     }
